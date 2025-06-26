@@ -1,9 +1,17 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
+import type { ListaPersonajesResponse } from "../interfaces/lista-personajes.response"
 
 const title = "Rick & Morty | Kushki";
+
+const resp = await fetch("https://rickandmortyapi.com/api/character");
+const data = (await resp.json()) as ListaPersonajesResponse;
 ---
 
 <MainLayout title={title}>
-	
+	<h1 class="text-center text-3xl mt-4 mb-4">Lista de personajes</h1>	
+	<hr>
+	<ul class="mt-4">
+		{data.results.map((personaje) => <li>{personaje.name}</li>)}
+	</ul>
 </MainLayout>
