@@ -1,6 +1,7 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 import type { ListaPersonajesResponse } from "../interfaces/lista-personajes.response"
+import PersonajeCard from "../components/PersonajeCard.astro";
 
 const title = "Rick & Morty | Kushki";
 
@@ -9,9 +10,16 @@ const data = (await resp.json()) as ListaPersonajesResponse;
 ---
 
 <MainLayout title={title}>
-	<h1 class="text-center text-3xl mt-4 mb-4">Lista de personajes</h1>	
-	<hr>
-	<ul class="mt-4">
-		{data.results.map((personaje) => <li>{personaje.name}</li>)}
-	</ul>
+	<h1 class="text-center text-3xl my-7">Lista de personajes</h1>	
+	<hr class="mx-7 md:mx-4 lg:mx-2 xl:mx-0">
+	<section aria-label="Lista de personajes" class="mt-7 mx-6 grid gap-6 grid-cols-[repeat(auto-fit,_minmax(200px,_1fr))] justify-items-center">
+		{data.results.map(({name, image}) => (
+			<PersonajeCard
+				name = {name}
+				urlImage = {image}
+			/>
+		))}
+	</section>
+	<br>
+	<br>
 </MainLayout>
