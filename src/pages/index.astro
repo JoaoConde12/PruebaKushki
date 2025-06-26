@@ -13,8 +13,9 @@ const data = (await resp.json()) as ListaPersonajesResponse;
 	<h1 class="text-center text-3xl my-7">Lista de personajes</h1>	
 	<hr class="mx-7 md:mx-4 lg:mx-2 xl:mx-0">
 	<section aria-label="Lista de personajes" class="mt-7 mx-6 grid gap-6 grid-cols-[repeat(auto-fit,_minmax(200px,_1fr))] justify-items-center">
-		{data.results.map(({name, image}) => (
+		{data.results.map(({id, name, image}) => (
 			<PersonajeCard
+				id = {id}
 				name = {name}
 				urlImage = {image}
 			/>
