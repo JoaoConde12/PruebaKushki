@@ -1,0 +1,25 @@
+---
+interface Props {
+    name: string;
+    urlImage: string;
+}
+
+const {name, urlImage} = Astro.props;
+---
+
+<article class="flex flex-col justify-between w-full max-w-[20rem] rounded-xl bg-white text-gray-700 shadow-lg p-6">
+    <div class="relative overflow-hidden rounded-xl mb-4 aspect-square">
+        <img src={urlImage} alt={name} class="w-full h-auto object-cover" />
+    </div>
+  
+    <h5 class="text-2xl font-medium text-center text-blue-gray-900 mb-4">{name}</h5>
+
+    <div class="mt-auto">
+        <button
+            class="block w-full rounded-lg bg-gray-900 py-3 px-4 text-center text-ms sm:text-xs font-bold uppercase text-white hover:bg-gray-700 transition"
+            type="button">
+            Ver personaje
+        </button>
+    </div>
+</article>
+  
