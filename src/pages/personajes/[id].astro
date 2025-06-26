@@ -1,0 +1,27 @@
+---
+import type { GetStaticPaths } from "astro";
+import MainLayout from "../../layouts/MainLayout.astro";
+import type { ListaPersonajesResponse } from "../../interfaces/lista-personajes.response";
+
+export const getStaticPaths = (async() => {
+    
+    const resp = await fetch("https://rickandmortyapi.com/api/character");
+    const {results} = (await resp.json()) as ListaPersonajesResponse;
+
+    return results.map(({id, name}) => ({
+        params: {id},
+        props: {name},
+    }));
+    
+}) satisfies GetStaticPaths;
+
+interface Props {
+    name: string;
+}
+
+const {name} = Astro.props;
+---
+
+<MainLayout title="">
+    <h1>{name}</h1>
+</MainLayout>
