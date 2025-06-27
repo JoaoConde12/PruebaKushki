@@ -3,7 +3,7 @@ import MainLayout from "../layouts/MainLayout.astro";
 import type { ListaPersonajesResponse } from "../interfaces/lista-personajes.response"
 import PersonajeCard from "../components/PersonajeCard.astro";
 
-const title = "Rick & Morty | Kushki";
+const title = "Rick & Morty | Inicio";
 
 const resp = await fetch("https://rickandmortyapi.com/api/character");
 const data = (await resp.json()) as ListaPersonajesResponse;
