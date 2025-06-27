@@ -9,6 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/netlify": "^6.4.0",
     "@astrojs/node": "^9.2.2",
     "@google/genai": "^1.7.0",
     "@google/generative-ai": "^0.24.1",
