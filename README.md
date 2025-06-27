@@ -1,24 +1,37 @@
-# Titulo del proyecto
+# Kushki Prueba - Generador de Documentación Interactiva
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+## 🏗️ Decisiones arquitectónicas
 
-## 🚀 Decisiones arquitectónicas
+### Tecnologías usadas
 
-#### Selección de framework
+- Astro
+- TypeScript
+- Tailwind CSS
 
-## Estrategias de rendimiento para el futuro
+### ¿Por qué se seleccionaron esas tecnologías?
 
-#### Lazy Loading y Partial Hydration
+Astro es un framework moderno que ha ganado popularidad en el último tiempo, es ideal para la construcción de sitios web estáticos como blogs, documentación y landing pages. En esta prueba se solicitó un sitio que consuma una API, genere tarjetas con los personajes y permita visualizar detalles de cada uno, incluyendo un resumen generado con IA. Dado que la mayor parte del sitio es estático, Astro brinda:
 
-#### SSR o SSG
+- Un sitio web rápido para el usuario final, priorizando la entrega de contenido estático con mínimo JavaScript.
+- Una experiencia de desarrollo amigable, con la flexibilidad de integrar frameworks como Vue, React o Svelte si se requiere en el futuro.
 
-## Guía de implementación
+Se eligió Astro frente a otros frameworks como Next.js o Vite debido a su enfoque en la generación de contenido estático y a su simplicidad de configuración, manteniendo un rendimiento óptimo al cargar muy poco JavaScript.
 
-#### Ejecución del proyecto de forma local
+Además, Astro incluye TypeScript por defecto, permitiendo trabajar con tipado estricto, mejor detección de errores en tiempo de desarrollo y mayor seguridad en el código. Por otro lado, Tailwind CSS facilita la creación de estilos de forma rápida y escalable, permitiendo obtener o desarrollar componentes reutilizables.
 
-#### Configuración de la API key de Gemini
+<br/>
+
+## 📈 Estrategias de rendimiento para el futuro
+
+### Lazy Loading y Partial Hydration
+
+### SSR o SSG
+
+## 💻 Guía de implementación
+
+### Ejecución del proyecto de forma local
+
+### Configuración de la API key de Gemini
 
 ## 🧞 Commands
 
@@ -33,7 +46,9 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-## 👀 Want to learn more?
+> [!NOTE]
+> Puedes ver de mejor manera el código aquí:
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
+[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
