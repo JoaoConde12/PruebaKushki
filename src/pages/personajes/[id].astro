@@ -2,26 +2,117 @@
 import type { GetStaticPaths } from "astro";
 import MainLayout from "../../layouts/MainLayout.astro";
 import type { ListaPersonajesResponse } from "../../interfaces/lista-personajes.response";
+import { Image } from "astro:assets";
 
 export const getStaticPaths = (async() => {
     
     const resp = await fetch("https://rickandmortyapi.com/api/character");
     const {results} = (await resp.json()) as ListaPersonajesResponse;
 
-    return results.map(({id, name}) => ({
-        params: {id},
-        props: {name},
+    return results.map((personaje) => ({
+        params: {id: personaje.id},
+        props: {personaje},
     }));
-    
+
 }) satisfies GetStaticPaths;
 
 interface Props {
+    id: number;
     name: string;
+    image: string;
+    status: string;
+    species: string;
+    gender: string;
+    origin: { name: string };
+    location: { name: string };
+    [key: string]: any;
 }
 
-const {name} = Astro.props;
+const {personaje} = Astro.props;
+
+const {
+  name,
+  image,
+  status,
+  species,
+  gender,
+  origin,
+  location
+} = personaje;
 ---
 
-<MainLayout title="">
-    <h1>{name}</h1>
+<MainLayout title=`Rick & Morty | ${name}`>
+    <main class="mt-8 md:grid">
+        <div class="flex flex-col items-center md:items-stretch justify-center md:flex-row md:gap-x-9">
+            <section class="">
+                <img src={image} alt={name} class="md:ml-4 xl:ml-0 md:w-md rounded-3xl">
+                <h3 class="md:ml-4 xl:ml-0 text-2xl font-bold text-center mt-3">{name}</h3>
+            </section>
+
+            <div class="col-span-2 w-full relative">
+                <h4 class="text-center mt-10 md:text-left md:-mt-2 text-2xl font-bold w-full p-2 mb-1">Detalles del personaje</h4>
+                <ul class="mx-3 list-disc list-inside p-2 space-y-2">
+                    <li><strong>Estado:</strong> {status}</li>
+                    <li><strong>Especie:</strong> {species}</li>
+                    <li><strong>Género:</strong> {gender}</li>
+                    <li><strong>Origen:</strong> {origin.name}</li>
+                    <li><strong>Locación:</strong> {location.name}</li>
+                </ul>
+            
+                <div class="absolute top-0 right-0 h-full w-[1px] bg-black"></div>
+            </div>
+
+
+            <div class="col-span-2 flex flex-col w-full items-start px-4 xl:px-0">
+                <button class="mt-4 md:mt-0 px-3 py-1.5 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
+                    ✨ Crear un resumen 
+                </button>
+                <textarea
+                    readonly
+                    class="border mt-4 p-2 w-full resize-none min-h-[150px]"
+                    placeholder="Resumen de Gemini..."></textarea>
+              </div>
+        </div>
+
+        <section>
+            <br>
+            <br>
+            <br>
+            <h4 class="mx-4 xl:mx-0 text-2xl font-bold">Respuesta Json del personaje:</h4>
+            <div class="relative mt-4 mx-4 xl:mx-0">
+                <button id="copyBtn" class="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
+                  📋 Copiar JSON
+                </button>
+                <div id="copyNotif" class="absolute top-1.5 left-50 -translate-x-1/2 px-3 py-1 bg-green-600 text-white text-sm rounded shadow opacity-0 transition-opacity duration-500 pointer-events-none">
+                  ¡Copiado!
+                </div>
+            </div>
+            <pre id="jsonOutput" class="mx-4 xl:mx-0 mt-4 bg-gray-100 dark:bg-gray-800 p-4 rounded-md text-sm overflow-auto text-black dark:text-white">{JSON.stringify(Astro.props, null, 2)}</pre>
+            <br>
+            <br>
+        </section>
+    </main>
+
+    <script type="module">
+        const copyBtn = document.getElementById("copyBtn");
+        const copyNotif = document.getElementById("copyNotif");
+        const pre = document.getElementById("jsonOutput");
+
+        copyBtn?.addEventListener("click", async () => {
+            try {
+                await navigator.clipboard.writeText(pre.textContent);
+
+                // Mostrar con fade-in
+                copyNotif.classList.remove("opacity-0");
+
+                // Ocultar con fade-out después de 2s
+                setTimeout(() => {
+                copyNotif.classList.add("opacity-0");
+                }, 2000);
+            } catch (err) {
+                alert("Error al copiar");
+            }
+        });
+    </script>
 </MainLayout>
+
