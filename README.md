@@ -31,6 +31,46 @@ Además, Astro incluye TypeScript por defecto, permitiendo trabajar con tipado e
 
 ### Ejecución del proyecto de forma local
 
+#### Requsitos previos
+
+- Node.js v20 o superior
+- npm (o `pnpm` / `yarn` si decides cambiar)
+
+> [!Tip]
+> Para comprobar la versión de node que tienes ejecutar en tu terminal:
+> ```bash
+> node -v
+
+#### Instalación
+
+1. **Clonar el repositorio:**
+
+    Abre tu terminal y ejecuta:
+    ```bash
+    git clone https://github.com/JoaoConde12/PruebaKushki.git
+    cd PruebaKushki
+    ```
+
+2. **Instalar dependencias:**
+
+    Una vez en la carpeta del proyecto ejecuta:
+    ```bash
+    npm install
+    ```
+    
+3. **Configuración de .env:**
+
+    Abre el proyecto en tu editor de código o IDE de tu preferencia. Una vez abierto, en la raíz del proyecto encontrarás un archivo `.env.example`, ahí debes añadir la clave de tu API de Gemini (en caso que no sepas como configurarla, puedes ir a la siguiente sección) de la siguiente forma:
+
+    ```ini
+    GEMINI_API_KEY="AQUI_DEBE_IR_TU_CLAVE"
+    ```
+
+    Una vez que hayas insertado tu clave, debes cambiar el nombre del archivo llamado `.env.example` por `.env`; o crear una copia del archivo `.env.example` y renombrar el archivo de copia a `.env`. **Ten en cuenta que la clave de tu API debe estar entre comillas**   
+
+4. **Cuatro:**
+
+
 ### Configuración de la API key de Gemini
 
 ## 🧞 Commands
