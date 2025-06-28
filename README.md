@@ -25,7 +25,11 @@ Además, Astro incluye TypeScript por defecto, permitiendo trabajar con tipado e
 
 ### Lazy Loading y Partial Hydration
 
-### SSR o SSG
+### SSR o SSG: ¿cómo y cuándo los usarlos?
+
+Los sitios web de documentación se caracterizan por ser sitios que no suelen variar su contenido de manera frecuente, por lo que herramientas como Astro, que priorizan el **Static Site Generation (SSG)**, son una de las mejores opciones. En este caso, la mayoría del sitio web es estático; las únicas partes que requieren algo de interactividad son el buscador de la barra de navegación y la generación de resúmenes con IA de un personaje. Pese a eso, se lo puede manejar de forma ligera con JavaScript o TypeScript sin sacrificar rendimiento.
+
+En caso de que la aplicación creciera, habría que analizar qué nuevas funcionalidades se quieren implementar, pero en caso de necesitar de alguna sección interactiva compleja, Astro nos permite implementar esa sección con un framework a través de las islas.
 
 ## 💻 Guía de implementación
 
