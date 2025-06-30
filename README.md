@@ -23,13 +23,34 @@ Además, Astro incluye TypeScript por defecto, permitiendo trabajar con tipado e
 
 ## 📈 Estrategias de rendimiento para el futuro
 
-### Lazy Loading y Partial Hydration
+### Lazy Loading y Partial Hydration, ¿qué componentes cargar de forma diferida?
+
+Empezando con **Lazy Loading**, este término se refiere a cargar diferentes recursos de forma diferida, haciendo que se carguen solo cuando se necesitan. Esto permite que el tiempo de carga inicial del sitio se reduzca y que también sea menor el consumo de ancho de banda. Algunos componentes que pueden ser cargados con Lazy Loading son:
+
+- Imágenes de personajes insertando en `<img>` el atributo `loading="lazy"`.
+- Generación de resúmenes con IA solo cuando se presione el botón para generar el resumen.
+
+Por otro lado, **Partial Hydration** es una forma de optimizar apps web donde se busca reducir la cantidad de JavaScript a solo las partes donde realmente se necesita. De esta manera solo se cargan y se hidratan las secciones que requieren cierta interactividad. En el caso de esta prueba, las partes que requieren cierta interactividad son:
+
+- Buscador de personajes con ID
+- Generador de resumen con IA
+- Botón para copiar el JSON del personaje
+
+Pero gracias a Astro, estas partes son las únicas que cargan el JavaScript necesario para que funcionen, aunque en este caso no mediante Partial Hydration sino utilizando JavaScript Vanilla, mientras que el resto del sitio web permanece estático. Sin embargo, en caso de necesitar interactividad más compleja en el futuro, se podría implementar Partial Hydration, ya que esta técnica está orientada al uso de islas en Astro mediante un framework como Vue o Svelte.
 
 ### SSR o SSG: ¿cómo y cuándo los usarlos?
 
 Los sitios web de documentación se caracterizan por ser sitios que no suelen variar su contenido de manera frecuente, por lo que herramientas como Astro, que priorizan el **Static Site Generation (SSG)**, son una de las mejores opciones. En este caso, la mayoría del sitio web es estático; las únicas partes que requieren algo de interactividad son el buscador de la barra de navegación y la generación de resúmenes con IA de un personaje. Pese a eso, se lo puede manejar de forma ligera con JavaScript o TypeScript sin sacrificar rendimiento.
 
-En caso de que la aplicación creciera, habría que analizar qué nuevas funcionalidades se quieren implementar, pero en caso de necesitar de alguna sección interactiva compleja, Astro nos permite implementar esa sección con un framework a través de las islas.
+En caso de que la aplicación creciera, habría que analizar qué nuevas funcionalidades se quieren implementar, pero en caso de necesitar de alguna sección interactiva compleja, Astro nos permite implementar esa sección con un framework a través de las islas. Las islas son pequeñas partes del sitio web donde sí se cargan con el JavaScript necesario pero el resto del contenido sigue siendo estático, esto permite que las páginas tengan contenido interactivo pero sigan siendo rápidas.
+
+Algunos ejemplos a futuro donde se pueda requerir alguna parte interactiva para esta prueba pueden ser:
+
+- Un **buscador de personajes** más avanzado, por ejemplo, que requiera mayor cantidad de filtros y que estos sean en tiempo real.
+- Un **generador de resumen** más completo, donde puedas personalizar el resumen como la longitud o el idioma.
+- Un **editor de la API** que permita al usuario probarla desde el navegador.
+
+En conclusión, lo mejor sería mantener el sitio web como un SSG ya que los sitios de documentación suelen ser estático en la mayor parte de su contenido, pero si se requiere de alguna funcionalidad que tenga interactividad, con Astro se podría implementarla a través de las islas sin perder rendimiento. 
 
 ## 💻 Guía de implementación
 
@@ -88,7 +109,7 @@ En caso de que la aplicación creciera, habría que analizar qué nuevas funcion
 
 ### Configuración de la API key de Gemini
 
-En esta sección veremos como obtener la API key de Gemini 
+En esta sección veremos como obtener la API key de Gemini:
 
 ---
 Desarrollado por [Joao Conde](https://github.com/JoaoConde12) - Prueba técnica Kushki 2025
